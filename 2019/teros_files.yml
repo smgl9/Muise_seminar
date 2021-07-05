@@ -1,0 +1,55 @@
+toplevel: ""
+name: vunit_test
+files: 
+  - name: "src/case_test.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/flag_cdc.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/if_else_test.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/lvds_adc.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "tb/case_test_tb.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "tb/flag_cdc_tb.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "tb/if_else_test_tb.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "tb/lvds_tb.sv"
+    file_type: systemVerilogSource
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "tb/muise_test_run.py"
+    file_type: python
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+tool_options: 
+  vunit: 
+    installation_path: ""
+    simulator: modelsim
+    options: "--verbose\x20"
+    add_libraries: ""
+    runner: ""

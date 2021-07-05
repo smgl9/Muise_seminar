@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from os.path import join , dirname, abspath
 import subprocess
-from vunit.ghdl_interface import GHDLInterface
-from vunit.simulator_factory import SIMULATOR_FACTORY
+from vunit.sim_if.ghdl import GHDLInterface
+from vunit.sim_if.factory import SIMULATOR_FACTORY
 from vunit   import VUnit, VUnitCLI
 from vunit.verilog import VUnit
 
@@ -24,7 +24,7 @@ except:
 print ("=============================================")
 simulator_class = SIMULATOR_FACTORY.select_simulator()
 simname = simulator_class.name
-print simname
+print (simname)
 if (simname == "modelsim"):
   f= open("modelsim.do","w+")
   f.write("add wave * \nlog -r /*\nvcd file\nvcd add -r /*\n")
