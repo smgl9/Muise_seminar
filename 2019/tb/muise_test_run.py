@@ -10,16 +10,6 @@ from vunit.verilog import VUnit
 ##############################################################################
 ##############################################################################
 
-#Check GHDL backend.
-code_coverage=False
-try:
-  if( GHDLInterface.determine_backend("")=="gcc" or  GHDLInterface.determine_backend("")=="GCC"):
-    code_coverage=True
-  else:
-    code_coverage=False
-except:
-  print("")
-
 #Check simulator.
 print ("=============================================")
 simulator_class = SIMULATOR_FACTORY.select_simulator()
@@ -42,8 +32,6 @@ ui = VUnit.from_argv()
 ##############################################################################
 ##############################################################################
 
-#Add array pkg.
-ui.add_array_util()
 ui.add_library("/opt/modelsim/18.0/modelsim_ase/altera/verilog/altera_mf")
 
 #Add module sources.
@@ -64,14 +52,7 @@ muise_test_tb_lib.add_source_files("lvds_tb.sv")
 ##############################################################################
 ##############################################################################
 
-#GHDL parameters.
-if(code_coverage==True):
-  muise_test_src_lib.add_compile_option   ("ghdl.flags"     , [  "-fprofile-arcs","-ftest-coverage" ])
-  muise_test_tb_lib.add_compile_option("ghdl.flags"     , [  "-fprofile-arcs","-ftest-coverage" ])
-  ui.set_sim_option("ghdl.elab_flags"      , [ "-Wl,-lgcov" ])
-  ui.set_sim_option("modelsim.init_files.after_load" ,["modelsim.do"])
-else:
-  ui.set_sim_option("modelsim.init_files.after_load" ,["modelsim.do"])
+ui.set_sim_option("modelsim.init_files.after_load" ,["modelsim.do"])
 
 
 #Run tests.
@@ -80,12 +61,3 @@ try:
 except SystemExit as exc:
   all_ok = exc.code == 0
 
-#Code coverage.
-if all_ok:
-  if(code_coverage==True):
-    subprocess.call(["lcov", "--capture", "--directory", "if_else_test.gcda", "--output-file",  "code_0.info" ])
-    subprocess.call(["genhtml","code_0.info","--output-directory", "html"])
-  else:
-    exit(0)
-else:
-  exit(1)

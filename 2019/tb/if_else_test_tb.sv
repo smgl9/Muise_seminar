@@ -1,6 +1,6 @@
 // `timescale 1 ps/ 1 ps
 `include "vunit_defines.svh"
-module test_vlg_tst;
+module if_else_test_tb;
 
 // constants
 // general purpose registers

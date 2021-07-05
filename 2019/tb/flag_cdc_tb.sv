@@ -1,6 +1,6 @@
 // `timescale 1 ps/ 1 ps
 `include "vunit_defines.svh"
-module flag_cdc_tst;
+module flag_cdc_tb;
 
 // constants
 // general purpose registers
